@@ -22,5 +22,14 @@ interface DispatcherInterface
 	 * @param EventInterface $event
 	 * @return EventInterface
 	 */
-	public function dispatch( $name, EventInterface $event );
+	public function dispatch($name, EventInterface $event);
+
+	/**
+	 * Add a listener for the given event
+	 * @param string $name
+	 * @param Callable $listener
+	 * @param int $priority
+	 * @return DispatcherInterface
+	 */
+	public function addListener($name, $listener, $priority = 0);
 }
