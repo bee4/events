@@ -11,7 +11,9 @@
 			"email": "s.hulard@chstudio.fr"
 		}
 	],
-	"require": {},
+	"require": {
+		"php": ">=5.4.0"
+	},
 	"require-dev": {
 		"phpunit/phpunit": "~4.3"
 	},
@@ -19,5 +21,8 @@
 		"psr-4": {
 			"Bee4\\Events\\": "src"
 		}
-  }
+    },
+	"suggest": {
+	  	"symfony/event-dispatcher": "Required if using Symfony event dispatcher adapter"
+	}
 }
