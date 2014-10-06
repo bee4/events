@@ -72,4 +72,14 @@ class SymfonyEventDispatcherAdapter implements DispatcherInterface
         $this->dispatcher->removeListener($name, $listener);
         return $this;
     }
+
+    /**
+     * Retrieve the listeners for a given event name
+     * @param string $name
+     * @return array
+     */
+    public function getListeners($name)
+    {
+        return $this->dispatcher->getListeners($name);
+    }
 } 
