@@ -32,4 +32,26 @@ interface DispatcherInterface
 	 * @return DispatcherInterface
 	 */
 	public function addListener($name, $listener, $priority = 0);
+
+	/**
+	 * Add a listener for the given event
+	 * @param string $name
+	 * @return DispatcherInterface
+	 */
+	public function getListeners($name = null);
+
+	/**
+	 * Add a listener for the given event
+	 * @param string $name
+	 * @return DispatcherInterface
+	 */
+	public function hasListeners($name = null);
+
+	/**
+	 * Add a listener for the given event
+	 * @param string $name
+	 * @param Callable $listener
+	 * @return DispatcherInterface
+	 */
+	public function removeListener($name, $listener);
 }

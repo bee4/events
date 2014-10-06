@@ -55,4 +55,49 @@ class FakeDispatcher implements DispatcherInterface
         sort($this->listeners[$name]);
         return $this;
     }
+
+    /**
+     * Add a listener for the given event
+     * @param string $name
+     * @return DispatcherInterface
+     */
+    public function getListeners($name = null)
+    {
+        if( $name === null ) {
+            return $this->listeners;
+        } elseif( $this->hasListeners($name)) {
+            return $this->listeners[$name];
+        } else {
+            return [];
+        }
+    }
+
+    /**
+     * Add a listener for the given event
+     * @param string $name
+     * @return DispatcherInterface
+     */
+    public function hasListeners($name = null)
+    {
+        return isset($this->listeners[$name]);
+    }
+
+    /**
+     * Add a listener for the given event
+     * @param string $name
+     * @param Callable $listener
+     * @return DispatcherInterface
+     */
+    public function removeListener($name, $listener)
+    {
+        if( $this->hasListeners($name) ) {
+            foreach ($this->listeners[$name] as $priority => $listeners ) {
+                if (false !== ($key = array_search($listener, $listeners, true))) {
+                    unset($this->listeners[$name][$priority][$key]);
+                }
+            }
+        }
+    }
+
+
 } 
