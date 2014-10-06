@@ -40,4 +40,11 @@ interface DispatcherInterface
 	 * @return DispatcherInterface
 	 */
 	public function removeListener($name, $listener);
+
+	/**
+	 * Retrieve the listeners for a given event name
+	 * @param string $name
+	 * @return array
+	 */
+	public function getListeners($name);
 }
