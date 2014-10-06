@@ -9,7 +9,7 @@
  * @package Bee4\Events
  */
 
-namespace BeeBot\Event\Adapters;
+namespace Bee4\Events\Adapters;
 
 use Bee4\Events\DispatcherInterface;
 use Bee4\Events\EventInterface;
