@@ -21,65 +21,65 @@ use Symfony\Component\EventDispatcher\EventDispatcher;
  */
 class SymfonyEventDispatcherAdapter implements DispatcherInterface
 {
-    /**
-     * @var EventDispatcher
-     */
-    protected $dispatcher;
+	/**
+	 * @var EventDispatcher
+	 */
+	protected $dispatcher;
 
-    /**
-     * @param EventDispatcher $dispatcher
-     */
-    public function __construct( EventDispatcher $dispatcher ) {
-        $this->dispatcher = $dispatcher;
-    }
+	/**
+	 * @param EventDispatcher $dispatcher
+	 */
+	public function __construct( EventDispatcher $dispatcher ) {
+		$this->dispatcher = $dispatcher;
+	}
 
-    /**
-     * @param string $name
-     * @param EventInterface $event
-     * @return EventInterface
-     */
-    public function dispatch($name, EventInterface $event)
-    {
-        $listeners = $this->dispatcher->getListeners($name);
-        foreach( $listeners as $listener ) {
-            call_user_func($listener, $event, $name, $this);
-        }
+	/**
+	 * @param string $name
+	 * @param EventInterface $event
+	 * @return EventInterface
+	 */
+	public function dispatch($name, EventInterface $event)
+	{
+		$listeners = $this->dispatcher->getListeners($name);
+		foreach( $listeners as $listener ) {
+			call_user_func($listener, $event, $name, $this);
+		}
 
-        return $event;
-    }
+		return $event;
+	}
 
-    /**
-     * Add a listener for the given event
-     * @param string $name
-     * @param Callable $listener
-     * @param int $priority
-     * @return DispatcherInterface
-     */
-    public function addListener($name, $listener, $priority = 0)
-    {
-        $this->dispatcher->addListener($name, $listener, $priority);
-        return $this;
-    }
+	/**
+	 * Add a listener for the given event
+	 * @param string $name
+	 * @param Callable $listener
+	 * @param int $priority
+	 * @return DispatcherInterface
+	 */
+	public function add($name, $listener, $priority = 0)
+	{
+		$this->dispatcher->addListener($name, $listener, $priority);
+		return $this;
+	}
 
-    /**
-     * Add a listener for the given event
-     * @param string $name
-     * @param Callable $listener
-     * @return DispatcherInterface
-     */
-    public function removeListener($name, $listener)
-    {
-        $this->dispatcher->removeListener($name, $listener);
-        return $this;
-    }
+	/**
+	 * Add a listener for the given event
+	 * @param string $name
+	 * @param Callable $listener
+	 * @return DispatcherInterface
+	 */
+	public function remove($name, $listener)
+	{
+		$this->dispatcher->removeListener($name, $listener);
+		return $this;
+	}
 
-    /**
-     * Retrieve the listeners for a given event name
-     * @param string $name
-     * @return array
-     */
-    public function getListeners($name)
-    {
-        return $this->dispatcher->getListeners($name);
-    }
-} 
+	/**
+	 * Retrieve the listeners for a given event name
+	 * @param string $name
+	 * @return array
+	 */
+	public function get($name)
+	{
+		return $this->dispatcher->getListeners($name);
+	}
+}
