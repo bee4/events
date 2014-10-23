@@ -31,7 +31,7 @@ interface DispatcherInterface
 	 * @param int $priority
 	 * @return DispatcherInterface
 	 */
-	public function addListener($name, $listener, $priority = 0);
+	public function add($name, $listener, $priority = 0);
 
 	/**
 	 * Remove a listener for the given event name
@@ -39,12 +39,12 @@ interface DispatcherInterface
 	 * @param Callable $listener
 	 * @return DispatcherInterface
 	 */
-	public function removeListener($name, $listener);
+	public function remove($name, $listener);
 
 	/**
 	 * Retrieve the listeners for a given event name
 	 * @param string $name
 	 * @return array
 	 */
-	public function getListeners($name);
+	public function get($name);
 }
