@@ -25,7 +25,7 @@ class SymfonyEventDispatcherAdapterTest extends \PHPUnit_Framework_TestCase {
 
 	protected function setUp() {
 		if( !class_exists("Symfony\Component\EventDispatcher\EventDispatcher") ) {
-			$this->fail('You must install dev dependencies to be able run tests!');
+			$this->markTestSkipped('You must install dev dependencies to be able run tests!');
 		}
 
 		$this->dispatcher = new \Symfony\Component\EventDispatcher\EventDispatcher();
