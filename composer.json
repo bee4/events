@@ -15,13 +15,14 @@
 		"php": ">=5.4.0"
 	},
 	"require-dev": {
-		"phpunit/phpunit": "~4.3"
+		"phpunit/phpunit": "~4.3",
+		"symfony/event-dispatcher": "~2.5"
 	},
 	"autoload": {
 		"psr-4": {
 			"Bee4\\Events\\": "src"
 		}
-    },
+  },
 	"suggest": {
 	  	"symfony/event-dispatcher": "Required if using Symfony event dispatcher adapter"
 	}
