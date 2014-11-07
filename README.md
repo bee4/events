@@ -1,7 +1,9 @@
 Bee4 / Events
 =============
 
+[![Build Status](https://scrutinizer-ci.com/g/bee4/events/badges/build.png?b=develop)](https://scrutinizer-ci.com/g/bee4/events/build-status/develop)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/bee4/events/badges/quality-score.png?b=develop)](https://scrutinizer-ci.com/g/bee4/events/?branch=develop)
+
 [![Latest Stable Version](https://poser.pugx.org/bee4/events/v/stable.png)](https://packagist.org/packages/bee4/events)
 [![Total Downloads](https://poser.pugx.org/bee4/events/downloads.png)](https://packagist.org/packages/bee4/events)
 [![Latest Unstable Version](https://poser.pugx.org/bee4/events/v/unstable.png)](https://packagist.org/packages/bee4/events)
@@ -32,7 +34,7 @@ or run this command:
 ```Shell
 composer require bee4/events:~1.0
 ```
-    
+
 Event System
 ------------
 ### DispatcherInterface
