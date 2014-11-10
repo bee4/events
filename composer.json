@@ -16,7 +16,8 @@
 	},
 	"require-dev": {
 		"phpunit/phpunit": "~4.3",
-		"symfony/event-dispatcher": "~2.5"
+		"symfony/event-dispatcher": "~2.5",
+		"evenement/evenement": "~2.0.0"
 	},
 	"autoload": {
 		"psr-4": {
@@ -24,6 +25,7 @@
 		}
   },
 	"suggest": {
-	  	"symfony/event-dispatcher": "Required if using Symfony event dispatcher adapter"
+	  	"symfony/event-dispatcher": "Required if using Symfony dispatcher adapter",
+	  	"evenement/evenement": "Required if using Événement dispatcher adapter"
 	}
 }
