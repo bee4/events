@@ -1,24 +1,27 @@
 Bee4 / Events
 =============
 
-[![Build Status](https://scrutinizer-ci.com/g/bee4/events/badges/build.png?b=develop)](https://scrutinizer-ci.com/g/bee4/events/build-status/develop)
+[![Build Status](https://travis-ci.org/bee4/transport.svg?branch=develop)](https://travis-ci.org/bee4/transport)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/bee4/events/badges/quality-score.png?b=develop)](https://scrutinizer-ci.com/g/bee4/events/?branch=develop)
+[![Code Coverage](https://scrutinizer-ci.com/g/bee4/events/badges/coverage.png)](https://scrutinizer-ci.com/g/bee4/events/)
 
-[![Latest Stable Version](https://poser.pugx.org/bee4/events/v/stable.png)](https://packagist.org/packages/bee4/events)
-[![Total Downloads](https://poser.pugx.org/bee4/events/downloads.png)](https://packagist.org/packages/bee4/events)
-[![Latest Unstable Version](https://poser.pugx.org/bee4/events/v/unstable.png)](https://packagist.org/packages/bee4/events)
 [![License](https://poser.pugx.org/bee4/events/license.png)](https://packagist.org/packages/bee4/events)
 
 The main goal of this code is to allow using Event Dispatcher pattern with different popular implementations :
 
 * [Symfony 2 Event Dispatcher](http://symfony.com/doc/current/components/event_dispatcher/introduction.html) component
-* more to come [Événement](https://github.com/igorw/evenement), [Zend Framework 2 Event Manager](https://github.com/zendframework/Component_ZendEventManager)...
+* [Événment Event Emittter](https://github.com/igorw/evenement) component
+* more to come [Zend Framework 2 Event Manager](https://github.com/zendframework/Component_ZendEventManager)...
 
 This library does not intend to provide the whole possibilities of each adapters but a standard couple of interface which allow to do not depend from one vendor. This way, you can use your preferred event system with one of the `bee4/events` user.
 
 
 Installing
 ----------
+[![Latest Stable Version](https://poser.pugx.org/bee4/events/v/stable.png)](https://packagist.org/packages/bee4/events)
+[![Total Downloads](https://poser.pugx.org/bee4/events/downloads.png)](https://packagist.org/packages/bee4/events)
+[![Latest Unstable Version](https://poser.pugx.org/bee4/events/v/unstable.png)](https://packagist.org/packages/bee4/events)
+
 This project can be installed using Composer. Add the following to your composer.json:
 
 ```JSON
