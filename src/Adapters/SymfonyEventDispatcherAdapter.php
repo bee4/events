@@ -6,7 +6,7 @@
  *
  * @copyright Bee4 2014
  * @author Stephane HULARD <s.hulard@chstudio.fr>
- * @package Bee4\Events
+ * @package Bee4\Events\Adapters
  */
 
 namespace Bee4\Events\Adapters;
@@ -17,11 +17,13 @@ use Symfony\Component\EventDispatcher\EventDispatcher;
 
 /**
  * Bridge to the Symfony EventDispatcher implementation
+ * @see https://github.com/symfony/EventDispatcher
  * @package BeeBot\Event\Adapters
  */
 class SymfonyEventDispatcherAdapter implements DispatcherInterface
 {
 	/**
+	 * Adapted instance
 	 * @var EventDispatcher
 	 */
 	protected $dispatcher;
