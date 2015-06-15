@@ -28,13 +28,13 @@ trait DispatcherAwareTrait
 	 * Dependency injection
 	 * @param DispatcherInterface $dispatcher
 	 */
-	final public function setDispatcher(DispatcherInterface $dispatcher) {
+	public function setDispatcher(DispatcherInterface $dispatcher) {
 		$this->dispatcher = $dispatcher;
 	}
 
 	/**
 	 * Access to the current dispatcher
-	 * @return DispatcherInterface
+	 * @return DispatcherInterface|null
 	 */
 	final public function getDispatcher() {
 		return $this->dispatcher;
@@ -45,7 +45,7 @@ trait DispatcherAwareTrait
 	 * @return boolean
 	 */
 	final public function hasDispatcher() {
-		return $this->dispatcher !== null;
+		return $this->dispatcher !== null && $this->dispatcher instanceof DispatcherInterface;
 	}
 
 	/**

@@ -11,20 +11,20 @@
 
 namespace Bee4\Test\Events;
 
-use Bee4\Events\Adapters\SymfonyEventDispatcherAdapter;
+use Bee4\Events\Adapters\EvenementEventEmitterAdapter;
 
 /**
- * Check behaviour SF2 EventDispatcher adapter
+ * Check behaviour Événement EventEmitter adapter
  * @package Bee4\Test\Events
  */
-class SymfonyEventDispatcherAdapterTest extends AbstractAdapterTest {
+class EvenementEventEmitterAdapterTest extends AbstractAdapterTest {
 	protected function setUp() {
-		if( !class_exists("Symfony\Component\EventDispatcher\EventDispatcher") ) {
+		if( !class_exists("Evenement\EventEmitter") ) {
 			$this->markTestSkipped('You must install dev dependencies to be able run tests!');
 		}
 
-		$this->adapter = new SymfonyEventDispatcherAdapter(
-			new \Symfony\Component\EventDispatcher\EventDispatcher()
+		$this->adapter = new EvenementEventEmitterAdapter(
+			new \Evenement\EventEmitter()
 		);
 	}
 }

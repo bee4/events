@@ -13,25 +13,25 @@ namespace Bee4\Events\Adapters;
 
 use Bee4\Events\DispatcherInterface;
 use Bee4\Events\EventInterface;
-use Symfony\Component\EventDispatcher\EventDispatcher;
+use Evenement\EventEmitter;
 
 /**
- * Bridge to the Symfony EventDispatcher implementation
- * @see https://github.com/symfony/EventDispatcher
+ * Bridge to the Événement EventEmmiter implementation
+ * @see https://github.com/igorw/evenement
  * @package BeeBot\Event\Adapters
  */
-class SymfonyEventDispatcherAdapter implements DispatcherInterface
+class EvenementEventEmitterAdapter implements DispatcherInterface
 {
 	/**
 	 * Adapted instance
-	 * @var EventDispatcher
+	 * @var EventEmmitter
 	 */
 	protected $dispatcher;
 
 	/**
-	 * @param EventDispatcher $dispatcher
+	 * @param EventEmitter $dispatcher
 	 */
-	public function __construct( EventDispatcher $dispatcher ) {
+	public function __construct( EventEmitter $dispatcher ) {
 		$this->dispatcher = $dispatcher;
 	}
 
@@ -42,7 +42,7 @@ class SymfonyEventDispatcherAdapter implements DispatcherInterface
 	 */
 	public function dispatch($name, EventInterface $event)
 	{
-		$listeners = $this->dispatcher->getListeners($name);
+		$listeners = $this->dispatcher->listeners($name);
 		foreach( $listeners as $listener ) {
 			call_user_func($listener, $event, $name, $this);
 		}
@@ -59,7 +59,7 @@ class SymfonyEventDispatcherAdapter implements DispatcherInterface
 	 */
 	public function add($name, $listener, $priority = 0)
 	{
-		$this->dispatcher->addListener($name, $listener, $priority);
+		$this->dispatcher->on($name, $listener);
 		return $this;
 	}
 
@@ -82,6 +82,6 @@ class SymfonyEventDispatcherAdapter implements DispatcherInterface
 	 */
 	public function get($name)
 	{
-		return $this->dispatcher->getListeners($name);
+		return $this->dispatcher->listeners($name);
 	}
 }
