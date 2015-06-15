@@ -1,5 +1,5 @@
-Bee4 / Events
-=============
+Bee4 / Events v1.0.1
+====================
 
 [![Build Status](https://travis-ci.org/bee4/transport.svg?branch=develop)](https://travis-ci.org/bee4/transport)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/bee4/events/badges/quality-score.png?b=develop)](https://scrutinizer-ci.com/g/bee4/events/?branch=develop)
