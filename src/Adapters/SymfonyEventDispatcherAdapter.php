@@ -23,6 +23,12 @@ use Symfony\Component\EventDispatcher\EventDispatcher;
 class SymfonyEventDispatcherAdapter extends AbstractDispatcherAdapter
 {
 	/**
+	 * Adapted dispatcher
+	 * @var Symfony\Component\EventDispatcher\EventDispatcher
+	 */
+	protected $dispatcher;
+
+	/**
 	 * @param Symfony\Component\EventDispatcher\EventDispatcher $dispatcher
 	 */
 	public function __construct( EventDispatcher $dispatcher ) {
@@ -30,7 +36,23 @@ class SymfonyEventDispatcherAdapter extends AbstractDispatcherAdapter
 	}
 
 	/**
-	 * @see AbstractDispatcherAdapter::getListeners
+	 * @see AbstractDispatcherAdapter::add
+	 */
+	public function add($name, $listener, $priority = 0) {
+		$this->dispatcher->addListener($name, $listener, $priority);
+		return $this;
+	}
+
+	/**
+	 * @see AbstractDispatcherAdapter::remove
+	 */
+	public function remove($name, $listener) {
+		$this->dispatcher->removeListener($name, $listener);
+		return $this;
+	}
+
+	/**
+	 * @see AbstractDispatcherAdapter::get
 	 */
 	public function get($name) {
 		return $this->dispatcher->getListeners($name);

@@ -13,6 +13,7 @@ namespace Bee4\Events\Adapters;
 
 use Bee4\Events\DispatcherInterface;
 use Bee4\Events\EventInterface;
+use Callable;
 
 /**
  * Bridge to the Symfony EventDispatcher implementation
@@ -46,10 +47,7 @@ abstract class AbstractDispatcherAdapter implements DispatcherInterface
 	 * @param int $priority
 	 * @return DispatcherInterface
 	 */
-	public function add($name, $listener, $priority = 0) {
-		$this->dispatcher->addListener($name, $listener, $priority);
-		return $this;
-	}
+	abstract public function add($name, $listener, $priority = 0);
 
 	/**
 	 * Add a listener for the given event
@@ -57,10 +55,7 @@ abstract class AbstractDispatcherAdapter implements DispatcherInterface
 	 * @param Callable $listener
 	 * @return DispatcherInterface
 	 */
-	public function remove($name, $listener) {
-		$this->dispatcher->removeListener($name, $listener);
-		return $this;
-	}
+	abstract public function remove($name, Callable $listener);
 
 	/**
 	 * Retrieve the listeners for a given event name

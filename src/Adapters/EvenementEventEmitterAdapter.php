@@ -30,11 +30,7 @@ class EvenementEventEmitterAdapter extends AbstractDispatcherAdapter
 	}
 
 	/**
-	 * Add a listener for the given event
-	 * @param string $name
-	 * @param Callable $listener
-	 * @param int $priority
-	 * @return DispatcherInterface
+	 * @see AbstractDispatcherAdapter::add
 	 */
 	public function add($name, $listener, $priority = 0) {
 		$this->dispatcher->on($name, $listener);
@@ -42,11 +38,17 @@ class EvenementEventEmitterAdapter extends AbstractDispatcherAdapter
 	}
 
 	/**
-	 * Retrieve the listeners for a given event name
-	 * @param string $name
-	 * @return array
+	 * @see AbstractDispatcherAdapter::get
 	 */
 	public function get($name) {
 		return $this->dispatcher->listeners($name);
+	}
+
+	/**
+	 * @see AbstractDispatcherAdapter::remove
+	 */
+	public function remove($name, $listener) {
+		$this->dispatcher->removeListener($name, $listener);
+		return $this;
 	}
 }
