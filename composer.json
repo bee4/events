@@ -16,9 +16,7 @@
 	},
 	"require-dev": {
 		"symfony/event-dispatcher": "~2.5",
-		"evenement/evenement": "~2.0.0",
-    "phpunit/phpunit": "~4.3",
-    "squizlabs/php_codesniffer": "2.*"
+		"evenement/evenement": "~2.0.0"
 	},
 	"autoload": {
 		"psr-4": {
@@ -28,5 +26,16 @@
 	"suggest": {
 	  	"symfony/event-dispatcher": "Required if using Symfony dispatcher adapter",
 	  	"evenement/evenement": "Required if using Événement dispatcher adapter"
-	}
+	},
+  "scripts": {
+    "install:phpunit": [
+      "mkdir -p bin && php -r \"file_put_contents('bin/phpunit', file_get_contents('https://phar.phpunit.de/phpunit-4.7.7.phar'));\"",
+      "chmod 755 bin/phpunit"
+    ],
+    "install:phpcodesniffer": [
+      "mkdir -p bin && php -r \"file_put_contents('bin/phpcs', file_get_contents('https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar'));\"",
+      "php -r \"file_put_contents('bin/phpcbf', file_get_contents('https://squizlabs.github.io/PHP_CodeSniffer/phpcbf.phar'));\"",
+      "chmod 755 bin/phpcs bin/phpcbf"
+    ]
+  }
 }
