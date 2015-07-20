@@ -4,6 +4,8 @@ Bee4 / Events v1.0.1
 [![Build Status](https://img.shields.io/travis/bee4/events.svg?style=flat-square)](https://travis-ci.org/bee4/events)
 [![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/bee4/events.svg?style=flat-square)](https://scrutinizer-ci.com/g/bee4/events/?branch=develop)
 [![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/bee4/events.svg?style=flat-square)](https://scrutinizer-ci.com/g/bee4/events/)
+[![SensiolabInsight](https://img.shields.io/sensiolabs/i/f06ff1ba-40a5-483b-88ce-c37b10177b2c.svg?style=flat-square)](https://insight.sensiolabs.com/projects/f06ff1ba-40a5-483b-88ce-c37b10177b2c)
+
 
 [![License](https://img.shields.io/packagist/l/bee4/events.svg?style=flat-square)](https://packagist.org/packages/bee4/events)
 
