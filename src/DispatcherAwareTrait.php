@@ -13,7 +13,7 @@ namespace Bee4\Events;
 
 /**
  * Event dispatcher aware behaviour
- * Allow an object to know the current event dispatcher with Dependency injection
+ * Allow an object to know the current event dispatcher with injection
  * @package BeeBot\Event
  */
 trait DispatcherAwareTrait
@@ -45,7 +45,9 @@ trait DispatcherAwareTrait
 	 * @return boolean
 	 */
 	final public function hasDispatcher() {
-		return $this->dispatcher !== null && $this->dispatcher instanceof DispatcherInterface;
+		return
+			$this->dispatcher !== null &&
+			$this->dispatcher instanceof DispatcherInterface;
 	}
 
 	/**
