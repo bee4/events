@@ -38,7 +38,7 @@ class SymfonyEventDispatcherAdapter extends AbstractDispatcherAdapter
 	/**
 	 * @see AbstractDispatcherAdapter::add
 	 */
-	public function add($name, $listener, $priority = 0) {
+	public function add($name, Callable $listener, $priority = 0) {
 		$this->dispatcher->addListener($name, $listener, $priority);
 		return $this;
 	}
@@ -46,7 +46,7 @@ class SymfonyEventDispatcherAdapter extends AbstractDispatcherAdapter
 	/**
 	 * @see AbstractDispatcherAdapter::remove
 	 */
-	public function remove($name, $listener) {
+	public function remove($name, Callable $listener) {
 		$this->dispatcher->removeListener($name, $listener);
 		return $this;
 	}

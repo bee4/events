@@ -23,6 +23,12 @@ use Evenement\EventEmitter;
 class EvenementEventEmitterAdapter extends AbstractDispatcherAdapter
 {
 	/**
+	 * Adapted dispatcher
+	 * @var Evenement\EventEmitter
+	 */
+	protected $dispatcher;
+
+	/**
 	 * @param Evenement\EventEmitter $dispatcher
 	 */
 	public function __construct( EventEmitter $dispatcher ) {
@@ -32,8 +38,16 @@ class EvenementEventEmitterAdapter extends AbstractDispatcherAdapter
 	/**
 	 * @see AbstractDispatcherAdapter::add
 	 */
-	public function add($name, $listener, $priority = 0) {
+	public function add($name, Callable $listener, $priority = 0) {
 		$this->dispatcher->on($name, $listener);
+		return $this;
+	}
+
+	/**
+	 * @see AbstractDispatcherAdapter::remove
+	 */
+	public function remove($name, Callable $listener) {
+		$this->dispatcher->removeListener($name, $listener);
 		return $this;
 	}
 
@@ -42,13 +56,5 @@ class EvenementEventEmitterAdapter extends AbstractDispatcherAdapter
 	 */
 	public function get($name) {
 		return $this->dispatcher->listeners($name);
-	}
-
-	/**
-	 * @see AbstractDispatcherAdapter::remove
-	 */
-	public function remove($name, $listener) {
-		$this->dispatcher->removeListener($name, $listener);
-		return $this;
 	}
 }

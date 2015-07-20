@@ -13,7 +13,6 @@ namespace Bee4\Events\Adapters;
 
 use Bee4\Events\DispatcherInterface;
 use Bee4\Events\EventInterface;
-use Callable;
 
 /**
  * Bridge to the Symfony EventDispatcher implementation
@@ -47,7 +46,7 @@ abstract class AbstractDispatcherAdapter implements DispatcherInterface
 	 * @param int $priority
 	 * @return DispatcherInterface
 	 */
-	abstract public function add($name, $listener, $priority = 0);
+	abstract public function add($name, Callable $listener, $priority = 0);
 
 	/**
 	 * Add a listener for the given event
