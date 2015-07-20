@@ -20,34 +20,13 @@ use Evenement\EventEmitter;
  * @see https://github.com/igorw/evenement
  * @package BeeBot\Event\Adapters
  */
-class EvenementEventEmitterAdapter implements DispatcherInterface
+class EvenementEventEmitterAdapter extends AbstractDispatcherAdapter
 {
 	/**
-	 * Adapted instance
-	 * @var EventEmmitter
-	 */
-	protected $dispatcher;
-
-	/**
-	 * @param EventEmitter $dispatcher
+	 * @param Evenement\EventEmitter $dispatcher
 	 */
 	public function __construct( EventEmitter $dispatcher ) {
 		$this->dispatcher = $dispatcher;
-	}
-
-	/**
-	 * @param string $name
-	 * @param EventInterface $event
-	 * @return EventInterface
-	 */
-	public function dispatch($name, EventInterface $event)
-	{
-		$listeners = $this->dispatcher->listeners($name);
-		foreach( $listeners as $listener ) {
-			call_user_func($listener, $event, $name, $this);
-		}
-
-		return $event;
 	}
 
 	/**
@@ -57,21 +36,8 @@ class EvenementEventEmitterAdapter implements DispatcherInterface
 	 * @param int $priority
 	 * @return DispatcherInterface
 	 */
-	public function add($name, $listener, $priority = 0)
-	{
+	public function add($name, $listener, $priority = 0) {
 		$this->dispatcher->on($name, $listener);
-		return $this;
-	}
-
-	/**
-	 * Add a listener for the given event
-	 * @param string $name
-	 * @param Callable $listener
-	 * @return DispatcherInterface
-	 */
-	public function remove($name, $listener)
-	{
-		$this->dispatcher->removeListener($name, $listener);
 		return $this;
 	}
 
@@ -80,8 +46,7 @@ class EvenementEventEmitterAdapter implements DispatcherInterface
 	 * @param string $name
 	 * @return array
 	 */
-	public function get($name)
-	{
+	public function get($name) {
 		return $this->dispatcher->listeners($name);
 	}
 }

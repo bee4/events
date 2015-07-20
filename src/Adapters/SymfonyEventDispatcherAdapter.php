@@ -20,68 +20,19 @@ use Symfony\Component\EventDispatcher\EventDispatcher;
  * @see https://github.com/symfony/EventDispatcher
  * @package BeeBot\Event\Adapters
  */
-class SymfonyEventDispatcherAdapter implements DispatcherInterface
+class SymfonyEventDispatcherAdapter extends AbstractDispatcherAdapter
 {
 	/**
-	 * Adapted instance
-	 * @var EventDispatcher
-	 */
-	protected $dispatcher;
-
-	/**
-	 * @param EventDispatcher $dispatcher
+	 * @param Symfony\Component\EventDispatcher\EventDispatcher $dispatcher
 	 */
 	public function __construct( EventDispatcher $dispatcher ) {
 		$this->dispatcher = $dispatcher;
 	}
 
 	/**
-	 * @param string $name
-	 * @param EventInterface $event
-	 * @return EventInterface
+	 * @see AbstractDispatcherAdapter::getListeners
 	 */
-	public function dispatch($name, EventInterface $event)
-	{
-		$listeners = $this->dispatcher->getListeners($name);
-		foreach( $listeners as $listener ) {
-			call_user_func($listener, $event, $name, $this);
-		}
-
-		return $event;
-	}
-
-	/**
-	 * Add a listener for the given event
-	 * @param string $name
-	 * @param Callable $listener
-	 * @param int $priority
-	 * @return DispatcherInterface
-	 */
-	public function add($name, $listener, $priority = 0)
-	{
-		$this->dispatcher->addListener($name, $listener, $priority);
-		return $this;
-	}
-
-	/**
-	 * Add a listener for the given event
-	 * @param string $name
-	 * @param Callable $listener
-	 * @return DispatcherInterface
-	 */
-	public function remove($name, $listener)
-	{
-		$this->dispatcher->removeListener($name, $listener);
-		return $this;
-	}
-
-	/**
-	 * Retrieve the listeners for a given event name
-	 * @param string $name
-	 * @return array
-	 */
-	public function get($name)
-	{
+	public function get($name) {
 		return $this->dispatcher->getListeners($name);
 	}
 }
