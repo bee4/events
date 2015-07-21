@@ -11,8 +11,6 @@
 
 namespace Bee4\Events\Adapters;
 
-use Bee4\Events\DispatcherInterface;
-use Bee4\Events\EventInterface;
 use Evenement\EventEmitter;
 
 /**
