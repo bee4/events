@@ -4,7 +4,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @copyright Bee4 2014
+ * @copyright Bee4 2015
  * @author Stephane HULARD <s.hulard@chstudio.fr>
  * @package Bee4\Events
  */
@@ -12,54 +12,40 @@
 namespace Bee4\Events;
 
 /**
- * Trait implementation of the DispatcherAwareInterface
+ * Event dispatcher aware behaviour
+ * Allow an object to know the current event dispatcher with injection
+ *
  * @package Bee4\Event
  */
-trait DispatcherAwareTrait
+interface DispatcherAwareInterface
 {
 	/**
-	 * The linked dispatcher instance
-	 * @var DispatcherInterface
-	 */
-	private $dispatcher;
-
-	/**
 	 * Dependency injection
+	 *
 	 * @param DispatcherInterface $dispatcher
 	 */
-	public function setDispatcher(DispatcherInterface $dispatcher) {
-		$this->dispatcher = $dispatcher;
-	}
+	public function setDispatcher(DispatcherInterface $dispatcher);
 
 	/**
 	 * Access to the current dispatcher
+	 *
 	 * @return DispatcherInterface|null
 	 */
-	final public function getDispatcher() {
-		return $this->dispatcher;
-	}
+	public function getDispatcher();
 
 	/**
 	 * Check if a dispatcher has been injected or not
+	 *
 	 * @return boolean
 	 */
-	final public function hasDispatcher() {
-		return
-			$this->dispatcher !== null &&
-			$this->dispatcher instanceof DispatcherInterface;
-	}
+	public function hasDispatcher();
 
 	/**
 	 * Dispatch an event if the dispatcher is loaded
+	 *
 	 * @param string $name event name to dispatch
 	 * @param EventInterface $event
 	 * @return boolean
 	 */
-	final public function dispatch($name, EventInterface $event) {
-		if( $this->hasDispatcher() ) {
-			$this->getDispatcher()->dispatch($name, $event);
-			return true;
-		}
-		return false;
-	}
+	public function dispatch($name, EventInterface $event);
 }
