@@ -49,6 +49,9 @@ Define how an object must trigger an event. It contains 4 methods :
 * `remove` to remove a given listener
 * `get` to retrieve all listeners attached to one event name
 
+###DispatcherAwareInterface
+Define how an object can rely to a dispatcher to handle events
+
 ### EventInterface
 Define an event object which can be triggered. There is no default behaviour for this kinf of object because an event can be really specific.
 
