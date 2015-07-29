@@ -1,11 +1,13 @@
-Bee4 / Events v1.0.1
+Bee4 / Events v1.0.2
 ====================
 
-[![Build Status](https://travis-ci.org/bee4/transport.svg?branch=develop)](https://travis-ci.org/bee4/transport)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/bee4/events/badges/quality-score.png?b=develop)](https://scrutinizer-ci.com/g/bee4/events/?branch=develop)
-[![Code Coverage](https://scrutinizer-ci.com/g/bee4/events/badges/coverage.png)](https://scrutinizer-ci.com/g/bee4/events/)
+[![Build Status](https://img.shields.io/travis/bee4/events.svg?style=flat-square)](https://travis-ci.org/bee4/events)
+[![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/bee4/events.svg?style=flat-square)](https://scrutinizer-ci.com/g/bee4/events/?branch=develop)
+[![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/bee4/events.svg?style=flat-square)](https://scrutinizer-ci.com/g/bee4/events/)
+[![SensiolabInsight](https://img.shields.io/sensiolabs/i/f06ff1ba-40a5-483b-88ce-c37b10177b2c.svg?style=flat-square)](https://insight.sensiolabs.com/projects/f06ff1ba-40a5-483b-88ce-c37b10177b2c)
 
-[![License](https://poser.pugx.org/bee4/events/license.png)](https://packagist.org/packages/bee4/events)
+
+[![License](https://img.shields.io/packagist/l/bee4/events.svg?style=flat-square)](https://packagist.org/packages/bee4/events)
 
 The main goal of this code is to allow using Event Dispatcher pattern with different popular implementations :
 
@@ -18,9 +20,8 @@ This library does not intend to provide the whole possibilities of each adapters
 
 Installing
 ----------
-[![Latest Stable Version](https://poser.pugx.org/bee4/events/v/stable.png)](https://packagist.org/packages/bee4/events)
-[![Total Downloads](https://poser.pugx.org/bee4/events/downloads.png)](https://packagist.org/packages/bee4/events)
-[![Latest Unstable Version](https://poser.pugx.org/bee4/events/v/unstable.png)](https://packagist.org/packages/bee4/events)
+[![Latest Stable Version](https://img.shields.io/packagist/v/bee4/events.svg?style=flat-square)](https://packagist.org/packages/bee4/events)
+[![Total Downloads](https://img.shields.io/packagist/dm/bee4/events.svg?style=flat-square)](https://packagist.org/packages/bee4/events)
 
 This project can be installed using Composer. Add the following to your composer.json:
 
@@ -47,6 +48,9 @@ Define how an object must trigger an event. It contains 4 methods :
 * `add` to attach a listener with priority
 * `remove` to remove a given listener
 * `get` to retrieve all listeners attached to one event name
+
+###DispatcherAwareInterface
+Define how an object can rely to a dispatcher to handle events
 
 ### EventInterface
 Define an event object which can be triggered. There is no default behaviour for this kinf of object because an event can be really specific.
