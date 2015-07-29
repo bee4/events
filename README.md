@@ -1,4 +1,4 @@
-	Bee4 / Events v1.0.1
+Bee4 / Events v1.0.2
 ====================
 
 [![Build Status](https://img.shields.io/travis/bee4/events.svg?style=flat-square)](https://travis-ci.org/bee4/events)
