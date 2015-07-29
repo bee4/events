@@ -1,4 +1,4 @@
-	Bee4 / Events v1.0.1
+Bee4 / Events v1.0.2
 ====================
 
 [![Build Status](https://img.shields.io/travis/bee4/events.svg?style=flat-square)](https://travis-ci.org/bee4/events)
@@ -48,6 +48,9 @@ Define how an object must trigger an event. It contains 4 methods :
 * `add` to attach a listener with priority
 * `remove` to remove a given listener
 * `get` to retrieve all listeners attached to one event name
+
+###DispatcherAwareInterface
+Define how an object can rely to a dispatcher to handle events
 
 ### EventInterface
 Define an event object which can be triggered. There is no default behaviour for this kinf of object because an event can be really specific.
