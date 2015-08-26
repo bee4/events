@@ -1,32 +1,32 @@
 {
-	"name": "bee4/events",
-	"description": "Basic event dispatcher definition, to allow a project to allow to manage events",
-	"license": "Apache-2.0",
-	"config": {
-		"bin-dir": "bin"
-	},
-	"authors": [
-		{
-			"name": "Stephane HULARD",
-			"email": "s.hulard@chstudio.fr"
-		}
-	],
-	"require": {
-		"php": ">=5.4.0"
-	},
-	"require-dev": {
-		"symfony/event-dispatcher": "~2.5",
-		"evenement/evenement": "~2.0.0"
-	},
-	"autoload": {
-		"psr-4": {
-			"Bee4\\Events\\": "src"
-		}
+  "name": "bee4/events",
+  "description": "Basic event dispatcher definition, to allow a project to allow to manage events",
+  "license": "Apache-2.0",
+  "config": {
+    "bin-dir": "bin"
   },
-	"suggest": {
-	  	"symfony/event-dispatcher": "Required if using Symfony dispatcher adapter",
-	  	"evenement/evenement": "Required if using Événement dispatcher adapter"
-	},
+  "authors": [
+    {
+      "name": "Stephane HULARD",
+      "email": "s.hulard@chstudio.fr"
+    }
+  ],
+  "require": {
+    "php": ">=5.4.0"
+  },
+  "require-dev": {
+    "symfony/event-dispatcher": "~2.5",
+    "evenement/evenement": "~2.0.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Bee4\\Events\\": "src"
+    }
+  },
+  "suggest": {
+      "symfony/event-dispatcher": "Required if using Symfony dispatcher adapter",
+      "evenement/evenement": "Required if using Événement dispatcher adapter"
+  },
   "scripts": {
     "install:phpunit": [
       "mkdir -p bin && php -r \"file_put_contents('bin/phpunit', file_get_contents('https://phar.phpunit.de/phpunit-4.7.7.phar'));\"",
