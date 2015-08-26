@@ -17,34 +17,34 @@ namespace Bee4\Events;
  */
 interface DispatcherInterface
 {
-	/**
-	 * @param string $name
-	 * @param EventInterface $event
-	 * @return EventInterface
-	 */
-	public function dispatch($name, EventInterface $event);
+    /**
+     * @param string $name
+     * @param EventInterface $event
+     * @return EventInterface
+     */
+    public function dispatch($name, EventInterface $event);
 
-	/**
-	 * Add a listener for the given event
-	 * @param string $name
-	 * @param Callable $listener
-	 * @param int $priority
-	 * @return DispatcherInterface
-	 */
-	public function add($name, Callable $listener, $priority = 0);
+    /**
+     * Add a listener for the given event
+     * @param string $name
+     * @param Callable $listener
+     * @param int $priority
+     * @return DispatcherInterface
+     */
+    public function add($name, callable $listener, $priority = 0);
 
-	/**
-	 * Remove a listener for the given event name
-	 * @param string $name
-	 * @param Callable $listener
-	 * @return DispatcherInterface
-	 */
-	public function remove($name, Callable $listener);
+    /**
+     * Remove a listener for the given event name
+     * @param string $name
+     * @param Callable $listener
+     * @return DispatcherInterface
+     */
+    public function remove($name, callable $listener);
 
-	/**
-	 * Retrieve the listeners for a given event name
-	 * @param string $name
-	 * @return array
-	 */
-	public function get($name);
+    /**
+     * Retrieve the listeners for a given event name
+     * @param string $name
+     * @return array
+     */
+    public function get($name);
 }

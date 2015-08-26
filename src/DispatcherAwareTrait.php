@@ -17,49 +17,53 @@ namespace Bee4\Events;
  */
 trait DispatcherAwareTrait
 {
-	/**
-	 * The linked dispatcher instance
-	 * @var DispatcherInterface
-	 */
-	private $dispatcher;
+    /**
+     * The linked dispatcher instance
+     * @var DispatcherInterface
+     */
+    private $dispatcher;
 
-	/**
-	 * Dependency injection
-	 * @param DispatcherInterface $dispatcher
-	 */
-	public function setDispatcher(DispatcherInterface $dispatcher) {
-		$this->dispatcher = $dispatcher;
-	}
+    /**
+     * Dependency injection
+     * @param DispatcherInterface $dispatcher
+     */
+    public function setDispatcher(DispatcherInterface $dispatcher)
+    {
+        $this->dispatcher = $dispatcher;
+    }
 
-	/**
-	 * Access to the current dispatcher
-	 * @return DispatcherInterface|null
-	 */
-	final public function getDispatcher() {
-		return $this->dispatcher;
-	}
+    /**
+     * Access to the current dispatcher
+     * @return DispatcherInterface|null
+     */
+    final public function getDispatcher()
+    {
+        return $this->dispatcher;
+    }
 
-	/**
-	 * Check if a dispatcher has been injected or not
-	 * @return boolean
-	 */
-	final public function hasDispatcher() {
-		return
-			$this->dispatcher !== null &&
-			$this->dispatcher instanceof DispatcherInterface;
-	}
+    /**
+     * Check if a dispatcher has been injected or not
+     * @return boolean
+     */
+    final public function hasDispatcher()
+    {
+        return
+            $this->dispatcher !== null &&
+            $this->dispatcher instanceof DispatcherInterface;
+    }
 
-	/**
-	 * Dispatch an event if the dispatcher is loaded
-	 * @param string $name event name to dispatch
-	 * @param EventInterface $event
-	 * @return boolean
-	 */
-	final public function dispatch($name, EventInterface $event) {
-		if( $this->hasDispatcher() ) {
-			$this->getDispatcher()->dispatch($name, $event);
-			return true;
-		}
-		return false;
-	}
+    /**
+     * Dispatch an event if the dispatcher is loaded
+     * @param string $name event name to dispatch
+     * @param EventInterface $event
+     * @return boolean
+     */
+    final public function dispatch($name, EventInterface $event)
+    {
+        if ($this->hasDispatcher()) {
+            $this->getDispatcher()->dispatch($name, $event);
+            return true;
+        }
+        return false;
+    }
 }

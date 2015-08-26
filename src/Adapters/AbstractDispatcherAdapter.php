@@ -20,46 +20,47 @@ use Bee4\Events\EventInterface;
  */
 abstract class AbstractDispatcherAdapter implements DispatcherInterface
 {
-	/**
-	 * Adapted instance
-	 */
-	protected $dispatcher;
+    /**
+     * Adapted instance
+     */
+    protected $dispatcher;
 
-	/**
-	 * @param string $name
-	 * @param EventInterface $event
-	 * @return EventInterface
-	 */
-	public function dispatch($name, EventInterface $event) {
-		$listeners = $this->get($name);
-		foreach( $listeners as $listener ) {
-			call_user_func($listener, $event, $name, $this);
-		}
+    /**
+     * @param string $name
+     * @param EventInterface $event
+     * @return EventInterface
+     */
+    public function dispatch($name, EventInterface $event)
+    {
+        $listeners = $this->get($name);
+        foreach ($listeners as $listener) {
+            call_user_func($listener, $event, $name, $this);
+        }
 
-		return $event;
-	}
+        return $event;
+    }
 
-	/**
-	 * Add a listener for the given event
-	 * @param string $name
-	 * @param Callable $listener
-	 * @param int $priority
-	 * @return DispatcherInterface
-	 */
-	abstract public function add($name, Callable $listener, $priority = 0);
+    /**
+     * Add a listener for the given event
+     * @param string $name
+     * @param Callable $listener
+     * @param int $priority
+     * @return DispatcherInterface
+     */
+    abstract public function add($name, callable $listener, $priority = 0);
 
-	/**
-	 * Add a listener for the given event
-	 * @param string $name
-	 * @param Callable $listener
-	 * @return DispatcherInterface
-	 */
-	abstract public function remove($name, Callable $listener);
+    /**
+     * Add a listener for the given event
+     * @param string $name
+     * @param Callable $listener
+     * @return DispatcherInterface
+     */
+    abstract public function remove($name, callable $listener);
 
-	/**
-	 * Retrieve the listeners for a given event name
-	 * @param string $name
-	 * @return array
-	 */
-	abstract public function get($name);
+    /**
+     * Retrieve the listeners for a given event name
+     * @param string $name
+     * @return array
+     */
+    abstract public function get($name);
 }
