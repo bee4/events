@@ -13,7 +13,8 @@
   },
   "require-dev": {
     "symfony/event-dispatcher": "~2.5",
-    "evenement/evenement": "~2.0.0",
+    "evenement/evenement": "~2.0",
+    "league/event": "~2.0",
     "atoum/atoum": "~2.5",
     "squizlabs/php_codesniffer": "~2.5"
   },
@@ -23,7 +24,8 @@
     }
   },
   "suggest": {
-      "symfony/event-dispatcher": "Required to use Symfony dispatcher adapter",
-      "evenement/evenement": "Required to use Événement dispatcher adapter"
+    "symfony/event-dispatcher": "Required to use Symfony dispatcher adapter",
+    "evenement/evenement": "Required to use Événement dispatcher adapter",
+    "league/event": "Required to use PHP League Event dispatcher adapter"
   }
 }
