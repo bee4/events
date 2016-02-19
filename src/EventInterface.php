@@ -16,4 +16,6 @@ namespace Bee4\Events;
  * @package Bee4\Events
  */
 interface EventInterface
-{}
+{
+
+}

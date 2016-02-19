@@ -4,34 +4,33 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @copyright Bee4 2014
+ * @copyright Bee4 2016
  * @author Stephane HULARD <s.hulard@chstudio.fr>
- * @package Bee4\Events\Adapters
  */
 
 namespace Bee4\Events\Adapters;
 
-use Evenement\EventEmitter;
+use League\Event\Emitter;
+use League\Event\CallbackListener;
 
 /**
- * Bridge to the Événement EventEmmiter implementation
- * @see https://github.com/igorw/evenement
- * @package BeeBot\Event\Adapters
+ * Bridge to the PHP League Event implementation
+ * @see http://event.thephpleague.com/2.0/
  */
-class EvenementEventEmitterAdapter extends AbstractDispatcherAdapter
+class LeagueEventAdapter extends AbstractDispatcherAdapter
 {
     /**
-     * Adapted dispatcher
-     * @var Evenement\EventEmitter
+     * Adapted emitter
+     * @var Emitter
      */
-    protected $dispatcher;
+    protected $emitter;
 
     /**
-     * @param Evenement\EventEmitter $dispatcher
+     * @param Emitter $emitter
      */
-    public function __construct(EventEmitter $dispatcher)
+    public function __construct(Emitter $emitter)
     {
-        $this->dispatcher = $dispatcher;
+        $this->emitter = $emitter;
     }
 
     /**
@@ -39,7 +38,7 @@ class EvenementEventEmitterAdapter extends AbstractDispatcherAdapter
      */
     public function add($name, callable $listener, $priority = 0)
     {
-        $this->dispatcher->on($name, $listener);
+        $this->emitter->addListener($name, $listener, $priority);
         return $this;
     }
 
@@ -48,7 +47,7 @@ class EvenementEventEmitterAdapter extends AbstractDispatcherAdapter
      */
     public function remove($name, callable $listener)
     {
-        $this->dispatcher->removeListener($name, $listener);
+        $this->emitter->removeListener($name, $listener);
         return $this;
     }
 
@@ -57,6 +56,12 @@ class EvenementEventEmitterAdapter extends AbstractDispatcherAdapter
      */
     public function get($name)
     {
-        return $this->dispatcher->listeners($name);
+        return array_map(
+            function (CallbackListener $listener) {
+                return $listener->getCallback();
+            },
+            $this->emitter->getListeners($name)
+        );
+
     }
 }

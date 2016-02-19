@@ -19,33 +19,33 @@ namespace Bee4\Events;
  */
 interface DispatcherAwareInterface
 {
-	/**
-	 * Dependency injection
-	 *
-	 * @param DispatcherInterface $dispatcher
-	 */
-	public function setDispatcher(DispatcherInterface $dispatcher);
+    /**
+     * Dependency injection
+     *
+     * @param DispatcherInterface $dispatcher
+     */
+    public function setDispatcher(DispatcherInterface $dispatcher);
 
-	/**
-	 * Access to the current dispatcher
-	 *
-	 * @return DispatcherInterface|null
-	 */
-	public function getDispatcher();
+    /**
+     * Access to the current dispatcher
+     *
+     * @return DispatcherInterface|null
+     */
+    public function getDispatcher();
 
-	/**
-	 * Check if a dispatcher has been injected or not
-	 *
-	 * @return boolean
-	 */
-	public function hasDispatcher();
+    /**
+     * Check if a dispatcher has been injected or not
+     *
+     * @return boolean
+     */
+    public function hasDispatcher();
 
-	/**
-	 * Dispatch an event if the dispatcher is loaded
-	 *
-	 * @param string $name event name to dispatch
-	 * @param EventInterface $event
-	 * @return boolean
-	 */
-	public function dispatch($name, EventInterface $event);
+    /**
+     * Dispatch an event if the dispatcher is loaded
+     *
+     * @param string $name event name to dispatch
+     * @param EventInterface $event
+     * @return boolean
+     */
+    public function dispatch($name, EventInterface $event);
 }
