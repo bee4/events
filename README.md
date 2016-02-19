@@ -1,4 +1,4 @@
-Bee4 / Events v1.0.2
+Bee4 / Events v1.0.3
 ====================
 
 [![Build Status](https://img.shields.io/travis/bee4/events.svg?style=flat-square)](https://travis-ci.org/bee4/events)
@@ -13,9 +13,9 @@ The main goal of this code is to allow using Event Dispatcher pattern with diffe
 
 * [Symfony 2 Event Dispatcher](http://symfony.com/doc/current/components/event_dispatcher/introduction.html) component
 * [Événment Event Emittter](https://github.com/igorw/evenement) component
-* more to come [Zend Framework 2 Event Manager](https://github.com/zendframework/Component_ZendEventManager)...
+* [League Event](http://event.thephpleague.com/) component
 
-This library does not intend to provide the whole possibilities of each adapters but a standard couple of interface which allow to do not depend from one vendor. This way, you can use your preferred event system with one of the `bee4/events` user.
+This library does not intend to provide the whole possibilities of each adapters but a standard couple of interface which allow to do not depend from one vendor. This way, you can use your preferred event system with one of the `bee4/events` lib user.
 
 
 Installing
@@ -50,14 +50,20 @@ Define how an object must trigger an event. It contains 4 methods :
 * `get` to retrieve all listeners attached to one event name
 
 ###DispatcherAwareInterface
-Define how an object can rely to a dispatcher to handle events
+Define how an object can rely to a dispatcher to handle events. It contains 4 methods :
+
+* `setDispatcher` to initialize the current `DispatcherInterface`
+* `getDispatcher` to retrieve the current `DispatcherInterface`
+* `hasDispatcher` to check if there is a current `DispatcherInterface`
+* `dispatch` to dispatch an `EventInterface` on the link `DispatcherInterface` if there is one...
 
 ### EventInterface
-Define an event object which can be triggered. There is no default behaviour for this kinf of object because an event can be really specific.
+Define an event object which can be triggered. There is no default behaviour for this kind of object because an event can be really specific.
 
 Adapters
 --------
-I hope you don't want to create your own dispatcher because there are some cool stuff overhere. There are adapters classes located in the `Bee4\Events\Adapters` namespace which can be used :
+I hope you don't want to create your own dispatcher because there are some cool stuff overhere.
+There are adapters classes located in the `Bee4\Events\Adapters` namespace :
 
 ```PHP
 <?php
@@ -69,5 +75,6 @@ $adapter->add('name', function(EventInterface $event) {
 });
 
 //EventImplementation must be defined in your project to suit your needs
+//If must implements the `EventInterface` contract
 $adapter->dispatch('name', new EventImplementation);
 ```
