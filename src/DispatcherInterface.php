@@ -44,6 +44,14 @@ interface DispatcherInterface
     public function on($name, callable $listener);
 
     /**
+     * Add a listener for the given event which will be ran only once
+     * @param string $name
+     * @param Callable $listener
+     * @return DispatcherInterface
+     */
+    public function once($name, callable $listener);
+
+    /**
      * Remove a listener for the given event name
      * @param string $name
      * @param Callable $listener
