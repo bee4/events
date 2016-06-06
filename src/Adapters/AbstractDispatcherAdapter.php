@@ -71,7 +71,7 @@ abstract class AbstractDispatcherAdapter implements DispatcherInterface
      */
     public function once($name, callable $listener)
     {
-        $once = function() use (&$once, $name, $listener) {
+        $once = function () use (&$once, $name, $listener) {
             $this->remove($name, $once);
             call_user_func_array($listener, func_get_args());
         };
