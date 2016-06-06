@@ -49,6 +49,28 @@ abstract class AbstractAdapterTest extends \atoum
                     ->hasSize(1);
     }
 
+    public function testOnce()
+    {
+        $this
+            ->given(
+                $handler = function () {
+                    echo "Youpi!";
+                },
+                $event = new \Mock\Bee4\Events\EventInterface
+            )
+            ->when($this->adapter->once('name', $handler))
+            ->then
+                ->array($this->adapter->get('name'))
+                    ->hasSize(1)
+            ->output(function () use ($event) {
+                $this->adapter->dispatch('name', $event);
+            })
+                ->isEqualTo("Youpi!")
+            ->then
+                ->array($this->adapter->get('name'))
+                    ->hasSize(0);
+    }
+
 
     public function testRemove()
     {

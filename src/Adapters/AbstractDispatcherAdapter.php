@@ -62,12 +62,21 @@ abstract class AbstractDispatcherAdapter implements DispatcherInterface
      */
     abstract public function on($name, callable $listener);
 
+    /**
+     * @see DispatcherInterface::once
      * @param string $name
      * @param Callable $listener
      * @param int $priority
      * @return DispatcherInterface
      */
-    abstract public function add($name, callable $listener, $priority = 0);
+    public function once($name, callable $listener)
+    {
+        $once = function() use (&$once, $name, $listener) {
+            $this->remove($name, $once);
+            call_user_func_array($listener, func_get_args());
+        };
+        $this->on($name, $once);
+    }
 
     /**
      * @see DispatcherInterface::remove
