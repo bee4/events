@@ -1,4 +1,4 @@
-Bee4 / Events v1.0.3
+Bee4 / Events v1.1.0
 ====================
 
 [![Build Status](https://img.shields.io/travis/bee4/events.svg?style=flat-square)](https://travis-ci.org/bee4/events)
@@ -28,7 +28,7 @@ This project can be installed using Composer. Add the following to your composer
 ```JSON
 {
     "require": {
-        "bee4/events": "~1.0"
+        "bee4/events": "~1.1"
     }
 }
 ```
@@ -36,7 +36,7 @@ This project can be installed using Composer. Add the following to your composer
 or run this command:
 
 ```Shell
-composer require bee4/events:~1.0
+composer require bee4/events:~1.1
 ```
 
 Event System
@@ -45,7 +45,8 @@ Event System
 Define how an object must trigger an event. It contains 4 methods :
 
 * `dispatch` to trigger an EventInterface instance
-* `add` to attach a listener with priority
+* `on` to attach a listener
+* `once` to attach a listener that will be ran then detached
 * `remove` to remove a given listener
 * `get` to retrieve all listeners attached to one event name
 
@@ -70,7 +71,7 @@ There are adapters classes located in the `Bee4\Events\Adapters` namespace :
 $vendor = new \Symfony\Component\EventDispatcher\EventDispatcher;
 $adapter = new \Bee4\Events\Adapters\SymfonyEventDispatcherAdapter($vendor);
 
-$adapter->add('name', function(EventInterface $event) {
+$adapter->on('name', function(EventInterface $event) {
 	echo "I have been triggered: ".PHP_EOL.print_r($event, true);
 });
 
