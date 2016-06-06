@@ -18,6 +18,7 @@ namespace Bee4\Events;
 interface DispatcherInterface
 {
     /**
+     * Notify all the observers from the updated state
      * @param string $name
      * @param EventInterface $event
      * @return EventInterface
@@ -25,13 +26,22 @@ interface DispatcherInterface
     public function dispatch($name, EventInterface $event);
 
     /**
-     * Add a listener for the given event
+     * Alias for the method `add`
      * @param string $name
      * @param Callable $listener
      * @param int $priority
      * @return DispatcherInterface
+     * @deprecated
      */
     public function add($name, callable $listener, $priority = 0);
+
+    /**
+     * Add a listener for the given event
+     * @param string $name
+     * @param Callable $listener
+     * @return DispatcherInterface
+     */
+    public function on($name, callable $listener);
 
     /**
      * Remove a listener for the given event name
