@@ -34,9 +34,9 @@ class LeagueEventAdapter extends AbstractDispatcherAdapter
     }
 
     /**
-     * @see AbstractDispatcherAdapter::add
+     * @see AbstractDispatcherAdapter::on
      */
-    public function add($name, callable $listener, $priority = 0)
+    public function on($name, callable $listener, $priority = 0)
     {
         $this->emitter->addListener($name, $listener, $priority);
         return $this;

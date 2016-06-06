@@ -26,6 +26,7 @@ abstract class AbstractDispatcherAdapter implements DispatcherInterface
     protected $dispatcher;
 
     /**
+     * @see DispatcherInterface::dispatch
      * @param string $name
      * @param EventInterface $event
      * @return EventInterface
@@ -41,7 +42,26 @@ abstract class AbstractDispatcherAdapter implements DispatcherInterface
     }
 
     /**
-     * Add a listener for the given event
+     * @see DispatcherInterface::add
+     * @param string   $name
+     * @param callable $listener
+     * @param integer  $priority
+     * @deprecated
+     */
+    public function add($name, callable $listener, $priority = 0)
+    {
+        return $this->on($name, $listener);
+    }
+
+    /**
+     * @see DispatcherInterface::on
+     * @param string $name
+     * @param Callable $listener
+     * @param int $priority
+     * @return DispatcherInterface
+     */
+    abstract public function on($name, callable $listener);
+
      * @param string $name
      * @param Callable $listener
      * @param int $priority
@@ -50,7 +70,7 @@ abstract class AbstractDispatcherAdapter implements DispatcherInterface
     abstract public function add($name, callable $listener, $priority = 0);
 
     /**
-     * Add a listener for the given event
+     * @see DispatcherInterface::remove
      * @param string $name
      * @param Callable $listener
      * @return DispatcherInterface
@@ -58,7 +78,7 @@ abstract class AbstractDispatcherAdapter implements DispatcherInterface
     abstract public function remove($name, callable $listener);
 
     /**
-     * Retrieve the listeners for a given event name
+     * @see DispatcherInterface::get
      * @param string $name
      * @return array
      */

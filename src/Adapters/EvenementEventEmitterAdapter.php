@@ -35,9 +35,9 @@ class EvenementEventEmitterAdapter extends AbstractDispatcherAdapter
     }
 
     /**
-     * @see AbstractDispatcherAdapter::add
+     * @see AbstractDispatcherAdapter::on
      */
-    public function add($name, callable $listener, $priority = 0)
+    public function on($name, callable $listener)
     {
         $this->dispatcher->on($name, $listener);
         return $this;

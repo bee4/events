@@ -25,16 +25,16 @@ abstract class AbstractAdapterTest extends \atoum
                 $handler = function () {
                     echo "Youpi!";
                 },
-                $event = new \mock\Bee4\Events\EventInterface
+                $event = new \Mock\Bee4\Events\EventInterface
             )
-            ->when($this->adapter->add('name', $handler))
+            ->when($this->adapter->on('name', $handler))
             ->output(function () use ($event) {
                 $this->adapter->dispatch('name', $event);
             })
                 ->isEqualTo("Youpi!");
     }
 
-    public function testAdd()
+    public function testOn()
     {
         $this
             ->given($handler = function () {
@@ -43,7 +43,7 @@ abstract class AbstractAdapterTest extends \atoum
             ->then
                 ->array($this->adapter->get('name'))
                     ->hasSize(0)
-            ->when($this->adapter->add('name', $handler))
+            ->when($this->adapter->on('name', $handler))
             ->then
                 ->array($this->adapter->get('name'))
                     ->hasSize(1);
@@ -57,7 +57,7 @@ abstract class AbstractAdapterTest extends \atoum
                 $handler = function () {
                     echo "Youpi!";
                 },
-                $this->adapter->add('name', $handler)
+                $this->adapter->on('name', $handler)
             )
             ->then
                 ->array($this->adapter->get('name'))
